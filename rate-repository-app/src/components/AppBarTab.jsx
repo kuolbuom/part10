@@ -3,8 +3,9 @@ import Text from "./Text";
 
 const styles = StyleSheet.create({
   tab: {
-    paddingTop: 30,
-    paddingBottom: 16,
+    paddingTop: 70,
+    paddingBottom: 22,
+    paddingLeft: 16,
   },
 });
 

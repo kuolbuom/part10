@@ -5,7 +5,16 @@ const theme = {
     primary: "#0366d6",
     appBarBackground: "#24292e",
     textWhite: "#ffffff",
+    mainBackground: "#e1e4e8",
+    itemsBackground: "white",
+    languageBackground: "#0366d6",
   },
+  spacing: {
+    small: 8,
+    medium: 16,
+    large: 24,
+  },
+
   fontSizes: {
     body: 14,
     subheading: 25,

@@ -1,34 +1,15 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
+import styles from "./styles";
+import RepositoryInfo from "./RepositoryInfo";
+import Statistics from "./Statistics";
 
 const RepositoryItem = ({ item }) => {
   return (
-    <View>
-      <View>
-        <View>
-          <Text>Full Name: {item.fullName}</Text>
-
-          <Text>Description: {item.description}</Text>
-
-          <Text>Language: {item.language}</Text>
-        </View>
-      </View>
-
-      <View>
-        <View>
-          <Text>Stars: {item.stargazersCount}</Text>
-        </View>
-        <View>
-          <Text>Forks: {item.forksCount}</Text>
-        </View>
-
-        <View>
-          <Text>Reviews: {item.reviewCount}</Text>
-        </View>
-
-        <View>
-          <Text>Rating: {item.ratingAverage}</Text>
-        </View>
-      </View>
+    <View style={styles.container}>
+      {/* Repository information */}
+      <RepositoryInfo item={item} />
+      {/* Statistics */}
+      <Statistics item={item} />
     </View>
   );
 };
