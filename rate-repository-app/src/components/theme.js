@@ -1,0 +1,23 @@
+const theme = {
+  colors: {
+    textPrimary: "#24292e",
+    textSecondary: "#586069",
+    primary: "#0366d6",
+    appBarBackground: "#24292e",
+    textWhite: "#ffffff",
+  },
+  fontSizes: {
+    body: 14,
+    subheading: 25,
+  },
+  fonts: {
+    main: "System",
+    fontAlt: "Arial",
+  },
+  fontWeights: {
+    normal: "400",
+    bold: "700",
+  },
+};
+
+export default theme;
