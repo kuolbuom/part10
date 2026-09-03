@@ -100,7 +100,7 @@ const SignIn = () => {
       />
 
       {formik.touched.password && formik.errors.password && (
-        <Text style={{ color: "red" }}>{formik.errors.password}</Text>
+        <Text style={{ color: "#d73a4a" }}>{formik.errors.password}</Text>
       )}
 
       <Pressable style={styles.button} onPress={formik.handleSubmit}>
