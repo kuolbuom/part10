@@ -42,7 +42,7 @@ const Text = ({ color, fontSize, fontWeight, style, fontFamily, ...props }) => {
     color === "textWhite" && styles.colorTextWhite,
     fontSize === "subheading" && styles.fontSizeSubheading,
     fontWeight === "bold" && styles.fontWeightBold,
-    fontFamily === "Arial" && styles.fontFamilyArial,
+    fontFamily === "System" && styles.fonts.text,
     style,
   ];
 

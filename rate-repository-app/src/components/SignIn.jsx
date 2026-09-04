@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     color: theme.colors.textWhite,
     fontWeight: theme.fontWeights.bold,
     fontSize: 16,
-    fontFamily: theme.fonts.fontAlt,
+    fontFamily: theme.fonts.main,
   },
 });
 
@@ -80,7 +80,7 @@ const SignIn = () => {
       />
 
       {formik.touched.username && formik.errors.username && (
-        <Text style={{ color: "red", marginBottom: theme.spacing.medium }}>
+        <Text style={{ color: "#d73a4a", marginBottom: theme.spacing.medium }}>
           {formik.errors.username}
         </Text>
       )}
