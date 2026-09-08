@@ -8,6 +8,7 @@ import theme from "./theme";
 import Text from "./Text";
 
 import useSignIn from "../hooks/useSignIn";
+import { useNavigate } from "react-router-native";
 
 const validationSchema = yup.object().shape({
   username: yup.string().required("Username is required"),
@@ -46,6 +47,7 @@ const styles = StyleSheet.create({
 
 const SignIn = () => {
   const [signIn] = useSignIn();
+  const navigate = useNavigate();
 
   const initialValues = {
     username: "",
@@ -62,6 +64,8 @@ const SignIn = () => {
       console.error("Sign-in error:", error);
     }
     console.log("formik values:", values);
+
+    navigate("/");
   };
 
   const formik = useFormik({
