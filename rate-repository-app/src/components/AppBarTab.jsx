@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Pressable } from "react-native";
 import { Link } from "react-router-native";
 import Text from "./Text";
 
@@ -10,31 +10,33 @@ const styles = StyleSheet.create({
   },
 });
 
-const AppBarTab = () => {
-  return (
-    <View style={{ flexDirection: "row" }}>
-      <Link to="/" style={styles.tab}>
+const AppBarTab = ({ text, to, onPress }) => {
+  if (onPress) {
+    return (
+      <Pressable onPress={onPress} style={styles.tab}>
         <Text
           color="textWhite"
           fontWeight="bold"
           fontSize="subheading"
           fontFamily="Arial"
         >
-          Repositories
+          {text}
         </Text>
-      </Link>
+      </Pressable>
+    );
+  }
 
-      <Link to="/signin" style={styles.tab}>
-        <Text
-          color="textWhite"
-          fontWeight="bold"
-          fontSize="subheading"
-          fontFamily="Arial"
-        >
-          Sign In
-        </Text>
-      </Link>
-    </View>
+  return (
+    <Link to={to} style={styles.tab}>
+      <Text
+        color="textWhite"
+        fontWeight="bold"
+        fontSize="subheading"
+        fontFamily="Arial"
+      >
+        {text}
+      </Text>
+    </Link>
   );
 };
 

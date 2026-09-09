@@ -63,7 +63,6 @@ const SignIn = () => {
     } catch (error) {
       console.error("Sign-in error:", error);
     }
-    console.log("formik values:", values);
 
     navigate("/");
   };
