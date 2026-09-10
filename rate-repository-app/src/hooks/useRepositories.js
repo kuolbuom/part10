@@ -6,12 +6,12 @@ const useRepositories = () => {
     fetchPolicy: "cache-and-network",
   });
   console.log("useRepositories - data:", data);
-  const repositories = data
+  const repositoriesNodes = data
     ? data.repositories.edges.map((edge) => edge.node)
     : [];
 
   return {
-    repositories,
+    repositoriesNodes,
     loading,
     error,
   };
