@@ -1,14 +1,14 @@
-import { View, TextInput, Pressable, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { useFormik } from "formik";
 
 import * as yup from "yup";
 
 import theme from "./theme";
 
-import Text from "./Text";
-
 import useSignIn from "../hooks/useSignIn";
 import { useNavigate } from "react-router-native";
+
+import SignInForm from "./SignInForm";
 
 const validationSchema = yup.object().shape({
   username: yup.string().required("Username is required"),
@@ -81,46 +81,11 @@ const SignIn = () => {
 
   return (
     <View style={styles.container}>
-      <TextInput
-        style={[
-          styles.input,
-          {
-            borderColor: getInputBorderColor("username"),
-          },
-        ]}
-        placeholder="Username"
-        value={formik.values.username}
-        onChangeText={formik.handleChange("username")}
-        onBlur={formik.handleBlur("username")}
+      <SignInForm
+        styles={styles}
+        formik={formik}
+        getInputBorderColor={getInputBorderColor}
       />
-
-      {formik.touched.username && formik.errors.username && (
-        <Text style={{ color: "#d73a4a", marginBottom: theme.spacing.medium }}>
-          {formik.errors.username}
-        </Text>
-      )}
-
-      <TextInput
-        style={[
-          styles.input,
-          {
-            borderColor: getInputBorderColor("password"),
-          },
-        ]}
-        placeholder="Password"
-        secureTextEntry
-        value={formik.values.password}
-        onChangeText={formik.handleChange("password")}
-        onBlur={formik.handleBlur("password")}
-      />
-
-      {formik.touched.password && formik.errors.password && (
-        <Text style={{ color: "#d73a4a" }}>{formik.errors.password}</Text>
-      )}
-
-      <Pressable style={styles.button} onPress={formik.handleSubmit}>
-        <Text style={styles.buttonText}>Sign in</Text>
-      </Pressable>
     </View>
   );
 };
