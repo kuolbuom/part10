@@ -8,10 +8,15 @@ const useRepository = (id) => {
     },
   });
 
+  const repository = data?.repository;
+
+  const reviews = repository?.reviews?.edges.map((edge) => edge.node) ?? [];
+
   console.log("useRepository - data:", data);
 
   return {
-    repository: data?.repository,
+    repository,
+    reviews,
     loading,
     error,
   };

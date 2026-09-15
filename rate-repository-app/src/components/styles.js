@@ -88,6 +88,57 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: "#687078",
   },
+
+  reviewContainer: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    paddingHorizontal: theme.spacing.medium,
+    paddingTop: theme.spacing.large,
+    paddingBottom: theme.spacing.large,
+    backgroundColor: theme.colors.itemsBackground,
+    borderBottomWidth: 8,
+    borderBottomColor: theme.colors.mainBackground,
+  },
+
+  ratingCircle: {
+    width: 90,
+    height: 90,
+    borderRadius: 45,
+    borderWidth: 3,
+    borderColor: "#0366d6",
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: theme.spacing.medium,
+  },
+
+  ratingText: {
+    fontSize: 32,
+    color: "#0366d6",
+    fontWeight: "bold",
+  },
+
+  reviewContent: {
+    flex: 1,
+  },
+
+  username: {
+    fontSize: 25,
+    fontWeight: "bold",
+    color: "#24292e",
+    marginBottom: 3,
+  },
+
+  date: {
+    fontSize: 21,
+    color: "#24292e",
+    marginBottom: 15,
+  },
+
+  reviewText: {
+    fontSize: 21,
+    lineHeight: 28,
+    color: "#24292e",
+  },
 });
 
 export default styles;
