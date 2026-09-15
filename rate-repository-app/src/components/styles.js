@@ -8,6 +8,21 @@ const styles = StyleSheet.create({
     paddingBottom: theme.spacing.large,
     marginBottom: theme.spacing.small,
   },
+  githubButton: {
+    backgroundColor: theme.colors.primary,
+    borderRadius: 8,
+    padding: theme.spacing.medium,
+    alignItems: "center",
+    justifyContent: "center",
+    marginHorizontal: theme.spacing.medium,
+    marginTop: theme.spacing.medium,
+  },
+  githubButtonText: {
+    color: theme.colors.textWhite,
+    fontWeight: theme.fontWeights.bold,
+    fontSize: 16,
+    fontFamily: theme.fonts.main,
+  },
   repositoryInfo: {
     flexDirection: "row",
     paddingHorizontal: theme.spacing.medium,
