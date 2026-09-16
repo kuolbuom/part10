@@ -1,12 +1,14 @@
-import { FlatList, View, StyleSheet, Pressable } from "react-native";
+import { FlatList, View, StyleSheet, Pressable, TextInput } from "react-native";
 import { useState } from "react";
 import { Picker } from "@react-native-picker/picker";
+import { MaterialIcons } from "@expo/vector-icons";
 
 import { useNavigate } from "react-router-native";
 import theme from "./theme";
 
 import RepositoryItem from "./RepositoryItem";
 import useRepositories from "../hooks/useRepositories";
+import useDebounce from "../hooks/useDebounce";
 import Text from "./Text";
 
 const styles = StyleSheet.create({
@@ -18,6 +20,38 @@ const styles = StyleSheet.create({
     width: "100%",
     color: "#000000",
     fontSize: 30,
+  },
+  searchInput: {
+    flex: 1,
+    color: theme.colors.textPrimary,
+    fontSize: 22,
+    paddingHorizontal: theme.spacing.small,
+  },
+  searchBar: {
+    alignItems: "center",
+    flexDirection: "row",
+    backgroundColor: "#f0eafa",
+    borderRadius: 52,
+    height: 100,
+    marginHorizontal: 22,
+    marginTop: 26,
+    marginBottom: 18,
+    paddingHorizontal: 22,
+    shadowColor: "#000000",
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.12,
+    shadowRadius: 12,
+    elevation: 5,
+  },
+  clearButton: {
+    alignItems: "center",
+    justifyContent: "center",
+    height: 48,
+    width: 48,
+  },
+  clearIcon: {
+    color: "#514d5b",
+    fontSize: 38,
   },
   separator: {
     height: 10,
@@ -34,9 +68,12 @@ const sortingOptions = {
 
 const RepositoryListContainer = () => {
   const [sort, setSort] = useState("latest");
-  const { repositoriesNodes, loading, error } = useRepositories(
-    sortingOptions[sort],
-  );
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const debouncedSearchKeyword = useDebounce(searchKeyword, 500);
+  const { repositoriesNodes, loading, error } = useRepositories({
+    ...sortingOptions[sort],
+    searchKeyword: debouncedSearchKeyword,
+  });
 
   const navigate = useNavigate();
 
@@ -55,6 +92,23 @@ const RepositoryListContainer = () => {
       ItemSeparatorComponent={ItemSeparator}
       ListHeaderComponent={
         <View>
+          <View style={styles.searchBar}>
+            <MaterialIcons name="search" size={36} color="#514d5b" />
+            <TextInput
+              style={styles.searchInput}
+              placeholder="Search repositories"
+              placeholderTextColor={theme.colors.textSecondary}
+              value={searchKeyword}
+              onChangeText={setSearchKeyword}
+            />
+            <Pressable
+              style={styles.clearButton}
+              onPress={() => setSearchKeyword("")}
+              accessibilityLabel="Clear search"
+            >
+              <Text style={styles.clearIcon}>×</Text>
+            </Pressable>
+          </View>
           <Picker
             style={styles.picker}
             prompt="Select an item..."
