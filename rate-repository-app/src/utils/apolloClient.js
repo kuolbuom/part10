@@ -6,6 +6,7 @@ const httpLink = new HttpLink({
 });
 
 const createApolloClient = (authStorage) => {
+  //context to the token from the backend
   const authLink = new SetContextLink(async ({ headers }) => {
     try {
       const accessToken = await authStorage.getAccessToken();
@@ -25,6 +26,7 @@ const createApolloClient = (authStorage) => {
     }
   });
 
+  //link to ApolloServer
   return new ApolloClient({
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),

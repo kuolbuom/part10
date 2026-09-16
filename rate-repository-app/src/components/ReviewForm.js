@@ -78,7 +78,7 @@ const ReviewForm = () => {
         },
       });
 
-      const repositoryId = response.data.createReview.review.repositoryId;
+      const repositoryId = response.data.createReview.repositoryId;
 
       navigate(`/repository/${repositoryId}`);
     } catch (error) {
@@ -106,7 +106,7 @@ const ReviewForm = () => {
         touched,
       }) => (
         <View style={styles.container}>
-          <Text style={styles.label}>Repository owner username</Text>
+          <Text style={styles.label}>Repository owner name</Text>
 
           <TextInput
             style={[
