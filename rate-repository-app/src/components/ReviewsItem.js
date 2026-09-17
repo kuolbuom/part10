@@ -9,7 +9,9 @@ const ReviewsItem = ({ review }) => {
       </View>
 
       <View style={styles.reviewContent}>
-        <Text style={styles.username}>{review.user.username}</Text>
+        <Text style={styles.username}>
+          {review.repository?.fullName ?? review.user?.username ?? "You"}
+        </Text>
         <Text style={styles.date}>
           {new Date(review.createdAt).toLocaleDateString("en-GB", {
             day: "numeric",

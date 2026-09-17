@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
     color: "#687078",
   },
 
+  //my-reviews and reviews styles
   reviewContainer: {
     flexDirection: "row",
     alignItems: "flex-start",
