@@ -1,7 +1,44 @@
-import { View, Text } from "react-native";
+import { Alert, Pressable, View, Text } from "react-native";
+import { useNavigate } from "react-router-native";
 import styles from "./styles";
+import { useMutation } from "@apollo/client/react";
+import { DELETE_REVIEW } from "../graphql/mutations";
 
-const ReviewsItem = ({ review }) => {
+const ReviewsItem = ({ review, refetch }) => {
+  const [deleteReview] = useMutation(DELETE_REVIEW);
+
+  const navigate = useNavigate();
+
+  const handleViewRepository = () => {
+    navigate(`/repository/${review.repository.id}`);
+  };
+
+  const handleDelete = () => {
+    Alert.alert(
+      "Delete review",
+      "Are you sure you want to delete this review?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "Delete",
+          style: "destructive",
+          onPress: async () => {
+            await deleteReview({
+              variables: {
+                id: review.id,
+              },
+            });
+
+            await refetch();
+          },
+        },
+      ],
+    );
+  };
+
   return (
     <View style={styles.reviewContainer}>
       <View style={styles.ratingCircle}>
@@ -21,6 +58,19 @@ const ReviewsItem = ({ review }) => {
         </Text>
 
         <Text style={styles.reviewText}>{review.text}</Text>
+
+        <View style={styles.actions}>
+          <Pressable
+            style={styles.viewActionButton}
+            onPress={handleViewRepository}
+          >
+            <Text style={styles.actionButtonText}>View repository</Text>
+          </Pressable>
+
+          <Pressable style={styles.deleteActionButton} onPress={handleDelete}>
+            <Text style={styles.actionButtonText}>Delete review</Text>
+          </Pressable>
+        </View>
       </View>
     </View>
   );

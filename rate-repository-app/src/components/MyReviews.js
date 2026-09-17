@@ -5,7 +5,7 @@ import { useMyReviews } from "../hooks/useMyReviews";
 import ReviewsItem from "./ReviewsItem";
 
 const MyReviews = () => {
-  const { reviews, loading, error } = useMyReviews();
+  const { reviews, loading, error, refetch } = useMyReviews();
 
   // Show loading message while reviews are being fetched
   if (loading) {
@@ -22,7 +22,7 @@ const MyReviews = () => {
     <FlatList
       data={reviews}
       keyExtractor={(item) => item.id}
-      renderItem={({ item }) => <ReviewsItem review={item} />}
+      renderItem={({ item }) => <ReviewsItem review={item} refetch={refetch} />}
     />
   );
 };

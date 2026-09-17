@@ -140,6 +140,31 @@ const styles = StyleSheet.create({
     lineHeight: 28,
     color: "#24292e",
   },
+
+  //veiw repository and delete buttons styles
+  actions: {
+    flexDirection: "row",
+    marginTop: theme.spacing.medium,
+    gap: theme.spacing.medium,
+  },
+
+  viewActionButton: {
+    backgroundColor: theme.colors.primary,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    borderRadius: 5,
+  },
+  deleteActionButton: {
+    backgroundColor: "red",
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    borderRadius: 5,
+  },
+
+  actionButtonText: {
+    color: theme.colors.textWhite,
+    fontWeight: theme.fontWeights.bold,
+  },
 });
 
 export default styles;
