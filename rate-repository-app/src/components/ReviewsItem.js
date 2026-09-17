@@ -41,36 +41,38 @@ const ReviewsItem = ({ review, refetch }) => {
 
   return (
     <View style={styles.reviewContainer}>
-      <View style={styles.ratingCircle}>
-        <Text style={styles.ratingText}>{review.rating}</Text>
+      <View style={{ flexDirection: "row" }}>
+        <View style={styles.ratingCircle}>
+          <Text style={styles.ratingText}>{review.rating}</Text>
+        </View>
+
+        <View style={styles.reviewContent}>
+          <Text style={styles.username}>
+            {review.repository?.fullName ?? review.user?.username ?? "You"}
+          </Text>
+          <Text style={styles.date}>
+            {new Date(review.createdAt).toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "short",
+              year: "numeric",
+            })}
+          </Text>
+
+          <Text style={styles.reviewText}>{review.text}</Text>
+        </View>
       </View>
 
-      <View style={styles.reviewContent}>
-        <Text style={styles.username}>
-          {review.repository?.fullName ?? review.user?.username ?? "You"}
-        </Text>
-        <Text style={styles.date}>
-          {new Date(review.createdAt).toLocaleDateString("en-GB", {
-            day: "numeric",
-            month: "short",
-            year: "numeric",
-          })}
-        </Text>
+      <View style={styles.actions}>
+        <Pressable
+          style={styles.viewActionButton}
+          onPress={handleViewRepository}
+        >
+          <Text style={styles.actionButtonText}>View repository</Text>
+        </Pressable>
 
-        <Text style={styles.reviewText}>{review.text}</Text>
-
-        <View style={styles.actions}>
-          <Pressable
-            style={styles.viewActionButton}
-            onPress={handleViewRepository}
-          >
-            <Text style={styles.actionButtonText}>View repository</Text>
-          </Pressable>
-
-          <Pressable style={styles.deleteActionButton} onPress={handleDelete}>
-            <Text style={styles.actionButtonText}>Delete review</Text>
-          </Pressable>
-        </View>
+        <Pressable style={styles.deleteActionButton} onPress={handleDelete}>
+          <Text style={styles.actionButtonText}>Delete review</Text>
+        </Pressable>
       </View>
     </View>
   );

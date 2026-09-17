@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
 
   //my-reviews and reviews styles
   reviewContainer: {
-    flexDirection: "row",
+    flexDirection: "column",
     alignItems: "flex-start",
     paddingHorizontal: theme.spacing.medium,
     paddingTop: theme.spacing.large,
@@ -145,25 +145,32 @@ const styles = StyleSheet.create({
   actions: {
     flexDirection: "row",
     marginTop: theme.spacing.medium,
-    gap: theme.spacing.medium,
+    gap: 20,
   },
 
   viewActionButton: {
     backgroundColor: theme.colors.primary,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
+    flex: 1,
+    flexBasis: 0,
+    minHeight: 74,
+    alignItems: "center",
+    justifyContent: "center",
     borderRadius: 5,
   },
   deleteActionButton: {
-    backgroundColor: "red",
-    paddingVertical: 10,
-    paddingHorizontal: 15,
+    backgroundColor: "#dc3545",
+    flex: 1,
+    flexBasis: 0,
+    minHeight: 74,
+    alignItems: "center",
+    justifyContent: "center",
     borderRadius: 5,
   },
 
   actionButtonText: {
     color: theme.colors.textWhite,
     fontWeight: theme.fontWeights.bold,
+    fontSize: 22,
   },
 });
 
