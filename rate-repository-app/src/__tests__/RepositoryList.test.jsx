@@ -4,6 +4,10 @@ import RepositoryListContainer from "../components/RepositoryListContainer";
 import useRepositories from "../hooks/useRepositories";
 
 jest.mock("../hooks/useRepositories");
+jest.mock("react-router-native", () => ({
+  ...jest.requireActual("react-router-native"),
+  useNavigate: () => jest.fn(),
+}));
 
 describe("RepositoryList", () => {
   describe("RepositoryListContainer", () => {

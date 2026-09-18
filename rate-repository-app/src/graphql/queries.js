@@ -53,7 +53,7 @@ export const ME = gql`
 `;
 
 export const REPOSITORY = gql`
-  query repository($repositoryId: ID!) {
+  query repository($repositoryId: ID!, $first: Int, $after: String) {
     repository(id: $repositoryId) {
       id
       fullName
@@ -66,7 +66,9 @@ export const REPOSITORY = gql`
       ownerAvatarUrl
       url
 
-      reviews {
+      reviews(first: $first, after: $after) {
+        totalCount
+
         edges {
           node {
             id
@@ -78,6 +80,12 @@ export const REPOSITORY = gql`
               username
             }
           }
+        }
+
+        pageInfo {
+          endCursor
+          startCursor
+          hasNextPage
         }
       }
     }
