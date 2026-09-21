@@ -14,11 +14,11 @@ Scan the QR code below using Expo Go to open the published application.
 
 ### Original EAS Update
 
-![QR Code](./qr-code.png)
+![QR Code](./rate-repository-app/qr-code.png)
 
 ### Latest EAS Update
 
-![QR Code](./qr-code-update.png)
+![QR Code](./rate-repository-app/qr-code-update.png)
 
 ### Technologies
 
