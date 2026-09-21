@@ -23,6 +23,17 @@
     },
     "plugins": [
       "expo-status-bar"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "4f7ffddd-d3a7-44dd-b080-aa8b67ec0725"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/4f7ffddd-d3a7-44dd-b080-aa8b67ec0725"
+    }
   }
 }

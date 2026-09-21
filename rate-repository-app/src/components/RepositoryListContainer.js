@@ -66,14 +66,15 @@ const sortingOptions = {
   lowest: { orderBy: "RATING_AVERAGE", orderDirection: "ASC" },
 };
 
-const RepositoryListContainer = () => {
+const RepositoryListContainer = ({ onEndReached }) => {
   const [sort, setSort] = useState("latest");
   const [searchKeyword, setSearchKeyword] = useState("");
   const debouncedSearchKeyword = useDebounce(searchKeyword, 500);
-  const { repositoriesNodes, loading, error } = useRepositories({
-    ...sortingOptions[sort],
-    searchKeyword: debouncedSearchKeyword,
-  });
+  const { repositoriesNodes, loading, error, handleFetchMore } =
+    useRepositories({
+      ...sortingOptions[sort],
+      searchKeyword: debouncedSearchKeyword,
+    });
 
   const navigate = useNavigate();
 
@@ -89,6 +90,8 @@ const RepositoryListContainer = () => {
   return (
     <FlatList
       data={repositoriesNodes}
+      onEndReached={handleFetchMore}
+      onEndReachedThreshold={0.5}
       ItemSeparatorComponent={ItemSeparator}
       ListHeaderComponent={
         <View>
